@@ -23,15 +23,31 @@ public class TileEngine
         {
             case UpArrow:
                 playerPositionY = playerPositionY - 1;
+                if (playerPositionY == 0)
+                {
+                    playerPositionY = playerPositionY + 1;
+                }
                 break;
             case LeftArrow:
                 playerPositionX = playerPositionX - 1;
+                if (playerPositionX == 0)
+                {
+                    playerPositionX = playerPositionX + 1;
+                }
                 break;
             case RightArrow:
                 playerPositionX = playerPositionX + 1;
+                if (playerPositionX == tileCountX - 1)
+                {
+                    playerPositionX = playerPositionX - 1;
+                }
                 break;
             case DownArrow:
                 playerPositionY = playerPositionY + 1;
+                if (playerPositionY == tileCountY - 1)
+                {
+                    playerPositionY = playerPositionY - 1;
+                }
                 break;
             default:
                 break;

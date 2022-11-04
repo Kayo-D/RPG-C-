@@ -1,6 +1,5 @@
 using System.Collections;
 using static System.Console;
-using static System.ConsoleKey;
 
 class UI
 {
@@ -18,13 +17,13 @@ class UI
             keyInput = ReadKey();
             switch (keyInput.Key)
             {
-                case D1:
+                case ConsoleKey.D1:
                     Level1();
                     break;
-                case D2:
+                case ConsoleKey.D2:
                     Level2();
                     break;
-                case D3:
+                case ConsoleKey.D3:
                     return;
                 default:
                     break;
@@ -34,14 +33,14 @@ class UI
     public void Level1()
     {
         TileEngine tiles = new();
-        int xBorder = 11;
-        int yBorder = 11;
+        tiles.tileCountX = 11;
+        tiles.tileCountY = 11;
         tiles.playerPositionX = 5;
         tiles.playerPositionY = 5;
         List<int> xBorderList;
         List<int> yBorderlist;
-        xBorderList = tiles.CreatePlayBorder(xBorder);
-        yBorderlist = tiles.CreatePlayBorder(yBorder);
+        xBorderList = tiles.CreatePlayBorder(tiles.tileCountX);
+        yBorderlist = tiles.CreatePlayBorder(tiles.tileCountY);
         while (true)
         {
             UITileEngineUpdate(yBorderlist, xBorderList, tiles.playerPositionY, tiles.playerPositionX);
@@ -49,29 +48,29 @@ class UI
             WriteLine("Use arrowkeys");
             WriteLine("(Q)uit");
             keyInput = ReadKey();
-            if (keyInput.Key == Q)
+            if (keyInput.Key == ConsoleKey.Q)
             {
                 return;
             }
             else
             {
                 tiles.PlayerPositionUpdate(keyInput);
-                xBorderList = tiles.CreatePlayBorder(xBorder);
-                yBorderlist = tiles.CreatePlayBorder(yBorder);
+                xBorderList = tiles.CreatePlayBorder(tiles.tileCountX);
+                yBorderlist = tiles.CreatePlayBorder(tiles.tileCountY);
             }
         }
     }
     public void Level2()
     {
         TileEngine tiles = new();
-        int xBorder = 22;
-        int yBorder = 22;
+        tiles.tileCountX = 22;
+        tiles.tileCountY = 22;
         tiles.playerPositionX = 10;
         tiles.playerPositionY = 10;
         List<int> xBorderList;
         List<int> yBorderlist;
-        xBorderList = tiles.CreatePlayBorder(xBorder);
-        yBorderlist = tiles.CreatePlayBorder(yBorder);
+        xBorderList = tiles.CreatePlayBorder(tiles.tileCountX);
+        yBorderlist = tiles.CreatePlayBorder(tiles.tileCountY);
         while (true)
         {
             UITileEngineUpdate(yBorderlist, xBorderList, tiles.playerPositionY, tiles.playerPositionX);
@@ -79,15 +78,15 @@ class UI
             WriteLine("Use arrowkeys");
             WriteLine("(Q)uit");
             keyInput = ReadKey();
-            if (keyInput.Key == Q)
+            if (keyInput.Key == ConsoleKey.Q)
             {
                 return;
             }
             else
             {
                 tiles.PlayerPositionUpdate(keyInput);
-                xBorderList = tiles.CreatePlayBorder(xBorder);
-                yBorderlist = tiles.CreatePlayBorder(yBorder);
+                xBorderList = tiles.CreatePlayBorder(tiles.tileCountX);
+                yBorderlist = tiles.CreatePlayBorder(tiles.tileCountY);
             }
         }
     }
@@ -101,6 +100,11 @@ class UI
                 if (i == playerPositionY && j == playerPositionX)
                 {
                     Console.BackgroundColor = ConsoleColor.Black;
+                    Write(" ");
+                }
+                else if (i == 0 || j == 0 || i == yBorderList.Count - 1 || j == xBorderList.Count - 1)
+                {
+                    Console.BackgroundColor = ConsoleColor.Red;
                     Write(" ");
                 }
                 else
