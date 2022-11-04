@@ -1,5 +1,6 @@
 using System.Collections;
 using static System.Console;
+using static System.ConsoleKey;
 
 class UI
 {
@@ -17,12 +18,12 @@ class UI
             keyInput = ReadKey();
             switch (keyInput.Key)
             {
-                case ConsoleKey.D1:
+                case D1:
                     Level1();
                     break;
-                case ConsoleKey.D2:
+                case D2:
                     break;
-                case ConsoleKey.D3:
+                case D3:
                     return;
                 default:
                     break;
@@ -89,7 +90,7 @@ class UI
             Clear();
             switch (keyInput.Key)
             {
-                case ConsoleKey.UpArrow:
+                case UpArrow:
                     tiles.tileListX.Clear();
                     tiles.tileListY.Clear();
                     tiles.playerPositionY = tiles.playerPositionY - 1;
@@ -118,7 +119,7 @@ class UI
                         }
                     }
                     break;
-                case ConsoleKey.LeftArrow:
+                case LeftArrow:
                     tiles.tileListX.Clear();
                     tiles.tileListY.Clear();
                     tiles.playerPositionX = tiles.playerPositionX - 1;
@@ -147,7 +148,7 @@ class UI
                         }
                     }
                     break;
-                case ConsoleKey.RightArrow:
+                case RightArrow:
                     tiles.tileListX.Clear();
                     tiles.tileListY.Clear();
                     tiles.playerPositionX = tiles.playerPositionX + 1;
@@ -176,7 +177,7 @@ class UI
                         }
                     }
                     break;
-                case ConsoleKey.DownArrow:
+                case DownArrow:
                     tiles.tileListX.Clear();
                     tiles.tileListY.Clear();
                     tiles.playerPositionY = tiles.playerPositionY + 1;
@@ -205,7 +206,7 @@ class UI
                         }
                     }
                     break;
-                case ConsoleKey.Q:
+                case Q:
                     return;
                 default:
                     break;
